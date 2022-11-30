@@ -7,19 +7,52 @@ export class News extends Component {
     super();
     console.log("Hello I am a constructor from news component");
     this.state = {
-      articles: this.articles,
-      loading: true,
+      articles:[],
+      loading: false,
+      page:1
     };
   }
-   async componentDidMount(){
+  async componentDidMount() {
     console.log("cdm");
-    let url="https://newsapi.org/v2/top-headlines?country=in&apiKey=85cf6d66d8c84bc994b9b6634a59e86f"
+    let url =
+      "https://newsapi.org/v2/top-headlines?country=in&apiKey=85cf6d66d8c84bc994b9b6634a59e86f&page=1&pageSize=20";
     let data = await fetch(url);
     let persedData = await data.json();
     console.log(persedData);
-    this.setState({articles: persedData.articles});
+    this.setState({ articles: persedData.articles });
   }
-  
+
+  handlenextclick = async () => {
+    console.log('handlenextclick');
+    let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=85cf6d66d8c84bc994b9b6634a59e86f&page=${
+      this.state.page + 1
+    }&pageSize=20`;
+    let data = await fetch(url);
+    let persedData = await data.json();
+    console.log(persedData);
+    this.setState({
+      page: this.state.page + 1,
+      articles: persedData.articles
+    })
+  }
+
+  handleprevclick = async () => {
+console.log('handleprevclick');
+    if (this.state.page + 1 > Math.ceil(this.state.totalResults / 20)) {
+    } else {
+      let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=85cf6d66d8c84bc994b9b6634a59e86f&page=${
+        this.state.page - 1
+      }&pageSize=20`;
+      let data = await fetch(url);
+      let persedData = await data.json();
+      console.log(persedData);
+      this.setState({
+        page: this.state.page - 1,
+        articles: persedData.articles,
+      })
+    }
+  }
+
   render() {
     return (
       <div className="container my-2">
@@ -29,14 +62,35 @@ export class News extends Component {
             return (
               <div className="col-md-4" key={element.url}>
                 <Newsitem
-                  title={element.title?element.title:" "}
-                  description={element.description ? element.description:" "}
-                  imageUrl={element.urlToImage ? element.urlToImage:"https://t4.ftcdn.net/jpg/00/38/13/73/360_F_38137330_gUbR3ZXBc5J5g4pRkaC8TYZQA62OZhx5.jpg"}
+                  title={element.title ? element.title : " "}
+                  description={element.description ? element.description : " "}
+                  imageUrl={
+                    element.urlToImage
+                      ? element.urlToImage
+                      : "https://t4.ftcdn.net/jpg/00/38/13/73/360_F_38137330_gUbR3ZXBc5J5g4pRkaC8TYZQA62OZhx5.jpg"
+                  }
                   newsUrl={element.url}
                 />
               </div>
             );
           })}
+        </div>
+        <div className="container d-flex justify-content-between">
+          <button
+            disabled={this.state.page <= 1}
+            type="button"
+            className="btn btn-dark btn-lg"
+            onClick={this.handleprevclick}
+          >
+            &larr; Previous{" "}
+          </button>
+          <button
+            type="button"
+            className="btn btn-dark btn-lg"
+            onClick={this.handlenextclick}
+          >
+            Next &rarr;
+          </button>
         </div>
       </div>
     );
