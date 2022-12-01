@@ -11,7 +11,7 @@ export default class App extends Component {
       <div>
         <NavBar/>
         {/* Hello, My First Class Based Component {this.c} */}
-        <News pageSize={6}/>
+        <News pageSize={6} country="in" category="sports"/>
       </div>
     )
   }

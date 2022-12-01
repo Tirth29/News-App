@@ -3,6 +3,7 @@ import Newsitem from "./Newsitem";
 import Spinner from "./spinner";
 export class News extends Component {
   articles = [];
+
   constructor() {
     super();
     console.log("Hello I am a constructor from news component");
@@ -14,7 +15,7 @@ export class News extends Component {
   }
   async componentDidMount() {
     console.log("cdm");
-    let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=85cf6d66d8c84bc994b9b6634a59e86f&page=1&pageSize=${this.props.pageSize}`;
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apikey=85cf6d66d8c84bc994b9b6634a59e86f&page=1&pageSize=${this.props.pageSize}`;
     this.setState({loading: true});
     let data = await fetch(url);
     let persedData = await data.json();
@@ -24,7 +25,7 @@ export class News extends Component {
 
   handlenextclick = async () => {
     console.log("handlenextclick");
-    let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=85cf6d66d8c84bc994b9b6634a59e86f&page=${
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category:${this.props.category}&apikey=85cf6d66d8c84bc994b9b6634a59e86f&page=${
       this.state.page + 1
     }&pageSize=${this.props.pageSize}`;
     this.setState({loading: true});
@@ -42,7 +43,7 @@ export class News extends Component {
     console.log("handleprevclick");
     if (this.state.page + 1 > Math.ceil(this.state.totalResults / 20)) {
     } else {
-      let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=85cf6d66d8c84bc994b9b6634a59e86f&page=${
+      let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category:${this.props.category}&apikey=85cf6d66d8c84bc994b9b6634a59e86f&page=${
         this.state.page - 1
       }&pageSize=${this.props.pageSize}`;
       this.setState({loading: true});
@@ -60,7 +61,7 @@ export class News extends Component {
   render() {
     return (
       <div className="container my-2">
-        <h1 className="text-center">NewsMonkey-Top Headlines</h1>
+        <h1 className="text-center" style={{margin: '30px'}}>NewsMonkey-Top Headlines</h1>
         {this.state.loading && <Spinner/>}
         <div className="row">
           {!this.state.loading && this.state.articles.map((element) => {

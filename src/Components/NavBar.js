@@ -1,8 +1,15 @@
 import React, { Component } from 'react'
-
+import PropTypes from 'prop-types'
 export class NavBar extends Component {
+  static defaultProps = {
+    country: "in",
+    pageSize: 6,
+    category: "general"
+  }
   static propTypes = {
-
+    country: PropTypes.string,
+    pageSize: PropTypes.number,
+    category: PropTypes.string
   }
 
   render() {
@@ -19,9 +26,16 @@ export class NavBar extends Component {
         <li className="nav-item">
           <a className="nav-link active" aria-current="page" href="/"><h5>Home</h5></a>
         </li>
-        <li className="nav-item">
-          <a className="nav-link" href="/about"><h5>About</h5></a>
-         </li>
+        <li className="nav-item"><a className="nav-link" href="/about"><h5>About</h5></a></li>
+
+        <li className="nav-item"><a className="nav-link" href="/about"><h5>bussiness</h5></a></li>
+        <li className="nav-item"><a className="nav-link" href="/about"><h5>entertainment</h5></a></li>
+        <li className="nav-item"><a className="nav-link" href="/about"><h5>general</h5></a></li>
+        <li className="nav-item"><a className="nav-link" href="/about"><h5>health</h5></a></li>
+        <li className="nav-item"><a className="nav-link" href="/about"><h5>science</h5></a></li>
+        <li className="nav-item"><a className="nav-link" href="/about"><h5>sports</h5></a></li>
+        <li className="nav-item"><a className="nav-link" href="/about"><h5>technology</h5></a></li>
+
         {/* <li className="nav-item dropdown">
           <a className="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
