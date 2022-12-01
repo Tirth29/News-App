@@ -76,6 +76,8 @@ export class News extends Component {
                       : "https://t4.ftcdn.net/jpg/00/38/13/73/360_F_38137330_gUbR3ZXBc5J5g4pRkaC8TYZQA62OZhx5.jpg"
                   }
                   newsUrl={element.url}
+                  author={element.author}
+                  date={element.publishedAt}
                 />
               </div>
             );
