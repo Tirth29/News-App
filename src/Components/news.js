@@ -60,7 +60,7 @@ export class News extends Component {
 
   render() {
     return (
-      <div className="container my-2">
+      <div className="container my-3">
         <h1 className="text-center" style={{margin: '30px'}}>NewsMonkey-Top Headlines</h1>
         {this.state.loading && <Spinner/>}
         <div className="row">
@@ -78,6 +78,7 @@ export class News extends Component {
                   newsUrl={element.url}
                   author={element.author}
                   date={element.publishedAt}
+                  source={element.source.name}
                 />
               </div>
             );
