@@ -29,12 +29,12 @@ export class NavBar extends Component {
         </li>
         <li className="nav-item"><Link className="nav-link" to="/about"><h5>About</h5></Link></li>
         {/* <li className="nav-item"><Link className="nav-link" to="/bussiness"><h5>bussiness</h5></Link></li> */}
-        <li className="nav-item"><Link className="nav-link" to="/entertainment"><h5>entertainment</h5></Link></li>
-        <li className="nav-item"><Link className="nav-link" to="/general"><h5>general</h5></Link></li>
-        <li className="nav-item"><Link className="nav-link" to="/health"><h5>health</h5></Link></li>
-        <li className="nav-item"><Link className="nav-link" to="/science"><h5>science</h5></Link></li>
-        <li className="nav-item"><Link className="nav-link" to="/sports"><h5>sports</h5></Link></li>
-        <li className="nav-item"><Link className="nav-link" to="/technology"><h5>technology</h5></Link></li>
+        <li className="nav-item"><Link className="nav-link" to="/entertainment"><h5>Entertainment</h5></Link></li>
+        <li className="nav-item"><Link className="nav-link" to="/general"><h5>General</h5></Link></li>
+        <li className="nav-item"><Link className="nav-link" to="/health"><h5>Health</h5></Link></li>
+        <li className="nav-item"><Link className="nav-link" to="/science"><h5>Science</h5></Link></li>
+        <li className="nav-item"><Link className="nav-link" to="/sports"><h5>Sports</h5></Link></li>
+        <li className="nav-item"><Link className="nav-link" to="/technology"><h5>Technology</h5></Link></li>
 
         {/* <li className="nav-item dropdown">
           <link className="nav-link dropdown-toggle" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
