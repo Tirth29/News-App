@@ -40,18 +40,6 @@ export class News extends Component {
 
   handlenextclick = async () => {
     console.log("handlenextclick");
-    // let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category:${this.props.category}&apikey=85cf6d66d8c84bc994b9b6634a59e86f&page=${
-    //   this.state.page + 1
-    // }&pageSize=${this.props.pageSize}`;
-    // this.setState({loading: true});
-    // let data = await fetch(url);
-    // let persedData = await data.json();
-    // console.log(persedData);
-    // this.setState({
-    //   page: this.state.page + 1,
-    //   articles: persedData.articles,
-    //   loading:false
-    // });
     this.setState({
       page: this.state.page + 1,
     });
